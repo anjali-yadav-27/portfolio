@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anjali Yadav | Portfolio</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Poppins', sans-serif; scroll-behavior: smooth; background:#b3b9de; transition: background 0.3s, color 0.3s;}
+.navbar {background:#0d6efd;}
+.navbar a {color:white; font-weight:600; margin:0 10px;}
+.navbar a:hover {color:#ffc107;}
+.hero {min-height:100vh; display:flex; align-items:center; justify-content:center; flex-direction: column; padding:40px 20px; background: linear-gradient(120deg, #d0e4ff, #f0e1ff); border-bottom-left-radius: 60px; border-bottom-right-radius: 60px; text-align:center;}
+.hero h1 {font-size: clamp(2.2rem, 5vw, 3.5rem); font-weight:700;}
+.hero img {width: clamp(150px, 28vw, 230px); height: clamp(150px, 28vw, 230px); border-radius:50%; object-fit:cover; border:5px solid white; box-shadow:0 10px 30px rgba(0,0,0,0.25); margin-bottom:20px; transition:.3s;}
+.hero img:hover {transform: scale(1.05);}
+.section-title {font-size: clamp(2rem,4vw,2.6rem); font-weight:700; color:#0d6efd; margin-bottom:40px; text-align:center;}
+.skill-box {padding:18px; background:white; border-radius:18px; box-shadow:0 4px 20px rgba(0,0,0,0.12); text-align:center; font-weight:600; transition:0.3s;}
+.skill-box:hover {transform: translateY(-5px); background:#eef4ff;}
+.project-card {border-radius:22px; padding:25px !important; background:white; box-shadow:0 4px 20px rgba(0,0,0,0.15); transition: transform 0.3s, box-shadow .3s; min-height:200px;}
+.project-card:hover {transform: translateY(-10px); box- shadow:0 10px 30px rgba(0,0,0,0.2);}
+footer {background:#0d6efd; color:white; padding:25px; margin-top:50px; border-top-left-radius:50px; border-top-right-radius:50px; text-align:center;}
+.dark-mode {background:#121212; color:white;}
+.dark-mode .hero {background:#1c1c1c;}
+.dark-mode .project-card, .dark-mode .skill-box {background:#1f1f1f; color:white;}
+.toggle-btn {position:fixed; top:20px; right:20px; background:#ffc107; border:none; padding:10px 15px; border-radius:6px; cursor:pointer; z-index:1000;}
+</style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top p-3">
+  <div class="container">
+    <a class="navbar-brand" href="#">Anjali Yadav</a>
+    <div class="collapse navbar-collapse">
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#certificates">Certificates</a>
+        <a class="nav-link" href="#contact">Contact</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<button class="toggle-btn" onclick="toggleDarkMode()">🌙 Dark Mode</button>
+
+<!-- Hero Section -->
+<section class="hero container-fluid">
+  <img src="pic.jpg" alt="Profile Photo",height="100px",width="100px">
+  <h1>Hi, I'm <span style="color:#0a58ca;">Anjali Yadav</span></h1>
+  <p class="lead">BCA Student • Web Developer • Programmer</p>
+  <a href="#projects" class="btn btn-primary btn-lg mt-3 px-4">View My Projects</a>
+</section>
+
+<!-- About -->
+<section class="container my-5" id="about">
+  <h2 class="section-title">About Me</h2>
+  <p class="text-center px-3 fs-5">I am a BCA student with skills in C, C++, Java, JavaScript, Bootstrap, HTML & CSS. Passionate about web development and creating impactful digital projects that solve real-world problems.</p>
+</section>
+
+<!-- Skills -->
+<section class="container my-5" id="skills">
+  <h2 class="section-title">Skills</h2>
+  <div class="row g-4 justify-content-center">
+    <div class="col-6 col-md-3"><div class="skill-box">HTML</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">CSS</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">JavaScript</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">Bootstrap</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">C</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">C++</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">Java</div></div>
+    <div class="col-6 col-md-3"><div class="skill-box">Python</div></div>
+  </div>
+</section>
+
+<!-- Projects -->
+<section class="container my-5" id="projects">
+  <h2 class="section-title">Projects</h2>
+  <div class="row g-4">
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">QR Code Generator</h4>
+        <p>Generates QR codes using JavaScript. Fully responsive.</p>
+        <a href="QRcode.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/qr-code-generator.git" class="btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Flipkart Clone</h4>
+        <p>A Flipkart-style homepage built with HTML, CSS, JS.</p>
+        <a href="flipkartClone.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/flipkart-clone.git" class="btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Weather App</h4>
+        <p>Fetches real-time weather data using APIs.</p>
+        <a href="weatherApp.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/weather-app.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">To-Do App</h4>
+        <p>Simple and interactive task manager app.</p>
+        <a href="ToDo.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/To-Do-App.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Student Registration Form</h4>
+        <p>Student Registration form.</p>
+        <a href="form.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/Student--Registration-form.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Digital timer and stop watch web app</h4>
+        <p>Digital timer and stop watch web app.</p>
+        <a href="WebApp.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/Digital-timer.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Product list with search filter</h4>
+        <p>Product list with search filter.</p>
+        <a href="SearchFilter.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/Product-list-with-search-filter.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+    <div class="col-md-6 col-lg-4">
+      <div class="project-card">
+        <h4 class="text-primary">Daily mood tracker</h4>
+        <p>Daily mood tracker.</p>
+        <a href="Moodtracker.html" class="btn btn-outline-primary mt-2">View Project</a>
+        <a href="https://github.com/anjali-yadav-27/Daily-mood-tracker.git" class=" btn btn-outline-secondary mt-2 ms-2">Source Code</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Certificates -->
+<section class="container my-5" id="certificates">
+  <h2 class="section-title">Certificates</h2>
+  <div class="row g-4">
+
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">Infosys certificate</h4>
+        <a href="infosys_certificate.pdf.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">Data Analysis using Python certificate</h4>
+        <a href="IBMDesign20260121-30-be4rd0.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">Udemy certificate</h4>
+        <a href="udemy_certificate.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+    
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">AI concepts for developers and technology professionals certificate</h4>
+        <a href="Microsoft Learn2.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+    
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">Design a machine learning solution</h4>
+        <a href="Achievements - anjaliyadav-3016 _ Microsoft Learn.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="project-card">
+        <h4 class="text-primary">Introduction to Google Cloud Platform</h4>
+        <a href="simpliLearn.pdf" class="btn btn-outline-primary mt-2">View Certificate</a>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="container my-5" id="contact">
+  <h2 class="section-title">Contact</h2>
+  <p class="text-center fs-5">📧 Email: <strong>2433157anjaliyadav@gmail.com</strong></p>
+  <p class="text-center fs-5">💼 LinkedIn: <a href="https://www.linkedin.com/in/anjali-yadav-337503324/" target="_blank">My Profile</a></p>
+  <p class="text-center fs-5">🐱 GitHub: <a href="https://github.com/anjali-yadav-27" target="_blank">My Repos</a></p>
+
+</section>
+
+<footer>
+  <p>© 2025 Anjali Yadav | Built with ❤️ using HTML, CSS & Bootstrap</p>
+</footer>
+
+<script>
+function toggleDarkMode(){
+  document.body.classList.toggle('dark-mode');
+}
+</script>
+
+</body>
+</html>
