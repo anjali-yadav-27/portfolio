@@ -6,6 +6,7 @@
 <title>Flipkart Clone</title>
 
 <style>
+
 body{
     margin:0;
     font-family:Arial;
@@ -13,6 +14,7 @@ body{
 }
 
 /* Navbar */
+
 .navbar{
     background:#2874f0;
     padding:10px 20px;
@@ -21,12 +23,14 @@ body{
     align-items:center;
     color:white;
 }
+
 .navbar input{
     flex:1;
     padding:8px;
     border:none;
     border-radius:4px;
 }
+
 .navbar button{
     padding:8px 12px;
     border:none;
@@ -38,15 +42,23 @@ body{
 }
 
 /* Categories */
+
 .categories{
     display:flex;
     justify-content:space-around;
     background:white;
     padding:15px;
     font-weight:bold;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.categories div{
+    cursor:pointer;
 }
 
 /* Products */
+
 .products{
     display:flex;
     flex-wrap:wrap;
@@ -54,20 +66,28 @@ body{
     padding:20px;
     justify-content:center;
 }
+
 .card{
     background:white;
-    width:200px;
+    width:220px;
     padding:15px;
     border-radius:6px;
     text-align:center;
     box-shadow:0 2px 6px rgba(0,0,0,0.1);
     cursor:pointer;
+    transition:0.3s;
 }
+
+.card:hover{
+    transform:scale(1.03);
+}
+
 .card img{
-    width:120px;
-    height:120px;
+    width:150px;
+    height:150px;
     object-fit:contain;
 }
+
 .card button{
     margin-top:8px;
     width:100%;
@@ -79,7 +99,8 @@ body{
     cursor:pointer;
 }
 
-/* Modal Common */
+/* Modal */
+
 .modal{
     display:none;
     position:fixed;
@@ -91,6 +112,7 @@ body{
     justify-content:center;
     align-items:center;
 }
+
 .modal-box{
     background:white;
     padding:20px;
@@ -98,129 +120,269 @@ body{
     border-radius:8px;
     text-align:center;
 }
+
 .modal-box img{
     width:150px;
 }
 
 /* Responsive */
+
 @media(max-width:768px){
-    .navbar{flex-direction:column;}
+
+    .navbar{
+        flex-direction:column;
+    }
+
+    .categories{
+        flex-direction:column;
+        align-items:center;
+    }
 }
+
 </style>
 </head>
 
 <body>
 
 <!-- Navbar -->
+
 <div class="navbar">
-    <img src="Flipkart-Emblema.png" height="30">
+
+    <!-- Logo -->
+    <img src="images/Flipkart-Emblema.png" height="30">
+
+    <!-- Search -->
     <input type="text" id="search" placeholder="Search products..." onkeyup="searchProduct()">
-    <button onclick="openCart()">Cart (<span id="cartCount">0</span>)</button>
+
+    <!-- Cart -->
+    <button onclick="openCart()">
+        Cart (<span id="cartCount">0</span>)
+    </button>
+
 </div>
 
 <!-- Categories -->
+
 <div class="categories">
+
     <div onclick="filterCategory('Mobiles')">Mobiles</div>
     <div onclick="filterCategory('Fashion')">Fashion</div>
     <div onclick="filterCategory('Electronics')">Electronics</div>
     <div onclick="filterCategory('Home')">Home</div>
+
 </div>
 
-
 <!-- Products -->
+
 <div class="products" id="productBox"></div>
 
-<!-- Product Details Modal -->
+<!-- Product Modal -->
+
 <div class="modal" id="productModal">
+
     <div class="modal-box">
+
         <img id="pImg">
+
         <h3 id="pName"></h3>
+
         <p id="pPrice"></p>
+
         <p id="pDesc"></p>
+
         <button onclick="closeProduct()">Close</button>
+
     </div>
+
 </div>
 
 <!-- Cart Modal -->
+
 <div class="modal" id="cartModal">
+
     <div class="modal-box">
+
         <h3>Your Cart</h3>
+
         <div id="cartItems"></div>
+
         <button onclick="closeCart()">Close</button>
+
     </div>
+
 </div>
 
 <script>
-    let cart = [];
+
+let cart = [];
+
+/* Products */
 
 let products = [
-  {name:"Smartphone",price:"₹12,999",img:"apple phone.jpg",desc:"Latest smartphone with powerful features",category:"Mobiles"},
-  {name:"Headphones",price:"₹1,999",img:"headphones.jpg",desc:"Wireless headphones with deep bass",category:"Electronics"},
-  {name:"Laptop",price:"₹45,999",img:"laptop.jpg",desc:"High performance laptop for work & coding",category:"Electronics"},
-  {name:"Smartwatch",price:"₹2,999",img:"smartwatch.jpg",desc:"Fitness tracking smartwatch",category:"Fashion"},
 
-  /* ✅ HOME PRODUCTS */
-  {name:"Sofa",price:"₹9,999",img:"sofa.jpg",desc:"Comfortable sofa for living room",category:"Home"},
-  {name:"Dining Table",price:"₹14,999",img:"dining.jpg",desc:"6-seater wooden dining table",category:"Home"},
-  {name:"Lamp",price:"₹1,299",img:"lamp.jpg",desc:"Decorative table lamp for home",category:"Home"}
+{
+    name:"Smartphone",
+    price:"₹12,999",
+    img:"images/apple phone.jpg",
+    desc:"Latest smartphone with powerful features",
+    category:"Mobiles"
+},
+
+{
+    name:"Headphones",
+    price:"₹1,999",
+    img:"images/headphones.jpg",
+    desc:"Wireless headphones with deep bass",
+    category:"Electronics"
+},
+
+{
+    name:"Laptop",
+    price:"₹45,999",
+    img:"images/laptop.jpg",
+    desc:"High performance laptop for work & coding",
+    category:"Electronics"
+},
+
+{
+    name:"Smartwatch",
+    price:"₹2,999",
+    img:"images/smartwatch.jpg",
+    desc:"Fitness tracking smartwatch",
+    category:"Fashion"
+},
+
+{
+    name:"Sofa",
+    price:"₹9,999",
+    img:"images/sofa.jpg",
+    desc:"Comfortable sofa for living room",
+    category:"Home"
+},
+
+{
+    name:"Dining Table",
+    price:"₹14,999",
+    img:"images/dining.jpg",
+    desc:"6-seater wooden dining table",
+    category:"Home"
+},
+
+{
+    name:"Lamp",
+    price:"₹1,299",
+    img:"images/lamp.jpg",
+    desc:"Decorative table lamp for home",
+    category:"Home"
+}
+
 ];
 
+/* Display Products */
 
 function displayProducts(list){
+
     let box = document.getElementById("productBox");
-    box.innerHTML="";
+
+    box.innerHTML = "";
+
     list.forEach((p,i)=>{
-        box.innerHTML+=`
+
+        box.innerHTML += `
+
         <div class="card" onclick="openProduct(${i})">
+
             <img src="${p.img}">
+
             <h4>${p.name}</h4>
+
             <p>${p.price}</p>
-            <button onclick="addCart(event,${i})">Add to Cart</button>
-        </div>`;
+
+            <button onclick="addCart(event,${i})">
+                Add to Cart
+            </button>
+
+        </div>
+
+        `;
     });
 }
 
 displayProducts(products);
 
 /* Product Details */
+
 function openProduct(i){
-    document.getElementById("pImg").src=products[i].img;
-    document.getElementById("pName").innerText=products[i].name;
-    document.getElementById("pPrice").innerText=products[i].price;
-    document.getElementById("pDesc").innerText=products[i].desc;
-    document.getElementById("productModal").style.display="flex";
+
+    document.getElementById("pImg").src = products[i].img;
+
+    document.getElementById("pName").innerText = products[i].name;
+
+    document.getElementById("pPrice").innerText = products[i].price;
+
+    document.getElementById("pDesc").innerText = products[i].desc;
+
+    document.getElementById("productModal").style.display = "flex";
 }
+
 function closeProduct(){
-    document.getElementById("productModal").style.display="none";
+
+    document.getElementById("productModal").style.display = "none";
 }
 
 /* Cart */
+
 function addCart(e,i){
+
     e.stopPropagation();
+
     cart.push(products[i]);
-    document.getElementById("cartCount").innerText=cart.length;
+
+    document.getElementById("cartCount").innerText = cart.length;
 }
+
 function openCart(){
-    let cartBox=document.getElementById("cartItems");
-    cartBox.innerHTML="";
+
+    let cartBox = document.getElementById("cartItems");
+
+    cartBox.innerHTML = "";
+
     cart.forEach(p=>{
-        cartBox.innerHTML+=`<p>${p.name} - ${p.price}</p>`;
+
+        cartBox.innerHTML += `
+        <p>${p.name} - ${p.price}</p>
+        `;
     });
-    document.getElementById("cartModal").style.display="flex";
+
+    document.getElementById("cartModal").style.display = "flex";
 }
+
 function closeCart(){
-    document.getElementById("cartModal").style.display="none";
+
+    document.getElementById("cartModal").style.display = "none";
 }
 
 /* Search */
+
 function searchProduct(){
-    let value=document.getElementById("search").value.toLowerCase();
-    let filtered=products.filter(p=>p.name.toLowerCase().includes(value));
+
+    let value = document.getElementById("search").value.toLowerCase();
+
+    let filtered = products.filter(p =>
+        p.name.toLowerCase().includes(value)
+    );
+
     displayProducts(filtered);
 }
 
+/* Filter Category */
+
 function filterCategory(cat){
-    let filtered = products.filter(p => p.category === cat);
+
+    let filtered = products.filter(p =>
+        p.category === cat
+    );
+
     displayProducts(filtered);
 }
 
